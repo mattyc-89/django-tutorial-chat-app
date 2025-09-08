@@ -1,0 +1,15 @@
+{% extends 'main.html' %} <!-- extends main.html so we have the navbar etc -->
+
+{% block content %} 
+
+<div>
+    <form method="POST" action="" >  <!--action is empty because it will post to the same url -->
+        
+        {% csrf_token %} 
+        {{ form.as_p }}  <!-- as_p means display the form fields as paragraphs -->  
+        <input type="submit" value="submit">
+
+    </form>
+</div>
+
+{% endblock content %}
