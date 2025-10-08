@@ -28,9 +28,14 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['coomberchats-cpc2ejbug7fvb5b9.uksouth-01.azurewebsites.net', '127.0.0.1', 'localhost']
 
+CSRF_TRUSTED_ORIGINS = ['https://coomberchats-cpc2ejbug7fvb5b9.uksouth-01.azurewebsites.net',]
+
+# 🔒 Cookie security settings - If below are set to true this will break the production server
+SESSION_COOKIE_SECURE = True  # ensures session cookies are only sent over HTTPS
+CSRF_COOKIE_SECURE = True  # ensures CSRF cookies are only sent over HTTPS
+CSRF_COOKIE_SAMESITE = "Lax"  # can be 'Lax', 'Strict', or None
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
