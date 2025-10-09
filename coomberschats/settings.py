@@ -151,7 +151,7 @@ STORAGES = {
     },
 }
 
-MEDIA_URL = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}/"
+MEDIA_URL = f"https://{config('AZURE_ACCOUNT_NAME')}.blob.core.windows.net/{config('AZURE_CONTAINER')}/"
 MEDIA_ROOT = None  # Not used with Azure
 
 
