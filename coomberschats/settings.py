@@ -138,10 +138,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
-# Azure Storage settings
-AZURE_ACCOUNT_NAME = config("AZURE_ACCOUNT_NAME")
-AZURE_CONTAINER = config("AZURE_CONTAINER")
-
 STORAGES = {
     "default": {
         "BACKEND": "coomberschats.storage_backends.AzureMediaStorage",
