@@ -5,24 +5,15 @@ from decouple import config
 
 
 class AzureMediaStorage(AzureStorage):
-    account_name = config("AZURE_ACCOUNT_NAME")
-    container_name = config("AZURE_CONTAINER")
-
     def __init__(self, *args, **kwargs):
-        account_url = f"https://{self.account_name}.blob.core.windows.net"
+        account_name = config("AZURE_ACCOUNT_NAME")
+        container_name = config("AZURE_CONTAINER")
+        account_url = f"https://{account_name}.blob.core.windows.net"
         credential = DefaultAzureCredential()
 
         # Managed Identity-authenticated client
         self.service_client = BlobServiceClient(account_url, credential=credential)
-        self.container_client = self.service_client.get_container_client(
-            self.container_name
-        )
-
-        # Ensure container exists and create if not
-        try:
-            self.container_client.create_container()
-        except Exception:
-            pass
+        self.container_client = self.service_client.get_container_client(container_name)
 
         super().__init__(*args, **kwargs)
 
