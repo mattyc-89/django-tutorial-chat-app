@@ -140,7 +140,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 STORAGES = {
     "default": {
-        "BACKEND": f"{config('AZURE_ACCOUNT_NAME')}.storage_backends.AzureMediaStorage",
+        "BACKEND": "coomberschats.storage_backends.AzureMediaStorage",
     },
     "staticfiles": {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
